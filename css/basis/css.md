@@ -40,5 +40,12 @@ clear: left;
 -----------------------
 `@media screen and (min-width:600px) {...}`
 
-
 [1]: ./isset/margin：auto属性的用法详解.png
+
+* inherit: 关键字指定一个属性应从父元素继承它的值
+* initial: 关键字用于设置 CSS 属性为它的默认值
+* unset: 如果该属性是默认继承属性，该值等同于inherit，如果该属性是非继承属性，该值等同于initial
+
+* 可继承属性和不可继承属性
+
+[https://www.jianshu.com/p/fbfc6c751e34](https://www.jianshu.com/p/fbfc6c751e34)
