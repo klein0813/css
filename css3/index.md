@@ -14,6 +14,13 @@ CSS3被拆分为"模块"。旧规范已拆分成小块，还增加了新的。
   * 多列布局
   * 用户界面
 
+> 选择器
+
+* ::selection
+  * ::selection选择器匹配元素中被用户选中或处于高亮状态的部分。
+  * ::selection只可以应用于少数的CSS属性：color, background, cursor,和outline
+  * Firefox 通过其私有属性 ::-moz-selection 支持
+
 > 边框
 
 * border-radius
@@ -39,6 +46,24 @@ CSS3被拆分为"模块"。旧规范已拆分成小块，还增加了新的。
   ```
 
 * border-image
+
+* box-reflect - 倒影
+  
+  * `box-reflect：none | <direction> <offset>? <mask-box-image>?`
+  * `<direction> = above | below | left | right`
+  * `<offset> = <length> | <percentage>`
+  * `<mask-box-image> =  none | <url> | <linear-gradient> | <radial-gradient> | <repeating-linear-gradient> | <repeating-radial-gradient>`
+  * 目前，Chrome 和 Safari 支持
+
+    ```css
+      .reflect {
+        width:950px;
+        margin:0 auto;
+        -webkit-box-reflect:below 0 -webkit-linear-gradient(transparent,transparent 50%,rgba(255,255,255,.3));
+        font:bold 100px/1.231 georgia,sans-serif;
+        text-transform:uppercase;
+      }
+    ```
 
 > 背景
 
@@ -111,17 +136,19 @@ CSS3被拆分为"模块"。旧规范已拆分成小块，还增加了新的。
   * text-overflow
     * 指定应向用户如何显示溢出内容
     * `clip`(修剪文本)|`ellipsis`(省略符号来代表被修剪的文本)|`string`(使用给定的字符串来代表被修剪的文本, 只在 Firefox 浏览器下有效)
+
     ```css
       white-space: nowrap;       // 文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止
-      width: 200px; 
+      width: 200px;
       border: 1px solid #000000;
       overflow: hidden;
-      text-overflow: ellipsis; 
+      text-overflow: ellipsis;
     ```
+
   * word-wrap
     * `normal`(只在允许的断字点换行（浏览器保持默认处理）)|`break-word`(强制文本换行)
   * word-break
-   * `normal`|`break-all`|`keep-all`(只能在半角空格或连字符处换行)
+    * `normal`|`break-all`|`keep-all`(只能在半角空格或连字符处换行)
   * word-wrap 当前行放不下，转动新行，若新的一行还放不下，则强制文本换行; word-break 当前行放不下，则强制文本换行
 
 > @font-face 规则
@@ -136,23 +163,25 @@ CSS3被拆分为"模块"。旧规范已拆分成小块，还增加了新的。
   ```
 
 > 2D转换和3D转换
-  * translate() // 平移
-  * rotate()    // 旋转
-  * scale()     // 缩放
-  * skew()      // 倾斜
-  * matrix()
 
-  * transform-origin: x-axis y-axis z-axis;
-    * left, center, right, length, %
+* translate() // 平移
+* rotate()    // 旋转
+* scale()     // 缩放
+* skew()      // 倾斜
+* matrix()
+
+* transform-origin: x-axis y-axis z-axis;
+  * left, center, right, length, %
 
 > 过渡
-  * transition	简写属性，用于在一个属性中设置四个过渡属性
-  * transition-property	规定应用过渡的 CSS 属性的名称
-  * transition-duration	定义过渡效果花费的时间，默认是 0
-  * transition-timing-function	规定过渡效果的时间曲线，默认是 "ease"
-    * transition-timing-function: linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n);
-    * 匀速/两头慢，中间快/开始慢/结束慢/开始结束慢, ease和ease-in-out的区别是ease-in-out的幅度更大一点
-  * transition-delay	规定过渡效果何时开始，默认是 0
+
+* transition 简写属性，用于在一个属性中设置四个过渡属性
+* transition-property 规定应用过渡的 CSS 属性的名称
+* transition-duration 定义过渡效果花费的时间，默认是 0
+* transition-timing-function 规定过渡效果的时间曲线，默认是 "ease"
+  * transition-timing-function: linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n);
+  * 匀速/两头慢，中间快/开始慢/结束慢/开始结束慢, ease和ease-in-out的区别是ease-in-out的幅度更大一点
+* transition-delay 规定过渡效果何时开始，默认是 0
 
   ```css
     div
@@ -165,39 +194,45 @@ CSS3被拆分为"模块"。旧规范已拆分成小块，还增加了新的。
 
 > 动画
 
+*
+
 > 多列
 
-  * column-count       // 列数
-  * column-gap         // 列与列间的间隙
-  * column-rule-style  // 列与列间的边框样式
-    * none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset
-  * column-rule-width  // 两列的边框厚度
-  * column-rule-color  // 两列的边框颜色
-  * column-rule        // column-rule-* 所有属性的简写  `column-rule: 1px solid lightblue;`
-  * column-span        // 跨越所有列
-  * column-width       // 列的宽度
-  * columns            // 设置 column-width 和 column-count 的简写
+* column-count       // 列数
+* column-gap         // 列与列间的间隙
+* column-rule-style  // 列与列间的边框样式
+  * none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset
+* column-rule-width  // 两列的边框厚度
+* column-rule-color  // 两列的边框颜色
+* column-rule        // column-rule-* 所有属性的简写  `column-rule: 1px solid lightblue;`
+* column-span        // 跨越所有列
+* column-width       // 列的宽度
+* columns            // 设置 column-width 和 column-count 的简写
 
 > 用户界面
-  * resize
-    * 指定一个元素是否应该由用户去调整大小
-    * none|both|horizontal|vertical;
 
-    ```css
-      resize: both;
-      overflow: auto; // 超出时的处理
-    ```
-  * box-sizing
-    * content-box|border-box|inherit:
-  * outline-offset    // 对轮廓进行偏移，并在超出边框边缘的位置绘制轮廓
-    
-    ```css
-      outline:2px solid red;
-      outline-offset:15px;
-    ```
+* resize
+  * 指定一个元素是否应该由用户去调整大小
+  * none|both|horizontal|vertical;
+
+  ```css
+    resize: both;
+    overflow: auto; // 超出时的处理
+  ```
+
+* box-sizing
+  * content-box|border-box|inherit:
+* outline-offset    // 对轮廓进行偏移，并在超出边框边缘的位置绘制轮廓
+
+  ```css
+    outline:2px solid red;
+    outline-offset:15px;
+  ```
 
 > CSS3 弹性盒子
 
-> 多媒体查询
-  * CSS3 的多媒体查询继承了 CSS2 多媒体类型的所有思想： 取代了查找设备的类型，CSS3 根据设置自适应显示
+*
 
+> 多媒体查询
+
+* CSS3 的多媒体查询继承了 CSS2 多媒体类型的所有思想： 取代了查找设备的类型，CSS3 根据设置自适应显示
